@@ -2,6 +2,7 @@ package com.mcloudoc.cloudoc.controller;
 
 import com.mcloudoc.cloudoc.entity.TotalPolicies;
 import com.mcloudoc.cloudoc.repository.TotalPoliciesRepository;
+import com.mcloudoc.cloudoc.service.TotalPoliciesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,12 @@ public class Home {
     }
 
     @Autowired
-    private TotalPoliciesRepository totalPoliciesRepository;
+    private TotalPoliciesService totalPoliciesService;
 
     @RequestMapping("/select/html")
     private String findPolicy(Model model){
-        List<TotalPolicies> items = totalPoliciesRepository.findDomainId("1000000000000");
+        List<TotalPolicies> items = totalPoliciesService.selectListAll("1000000000000");
+
 
         model.addAttribute("result",items);
 
@@ -32,7 +34,7 @@ public class Home {
 
     @RequestMapping("/select/jsp")
     private String findPolicy2(Model model){
-        List<TotalPolicies> items = totalPoliciesRepository.findDomainId("1000000000000");
+        List<TotalPolicies> items = totalPoliciesService.selectListAll("1000000000000");
 
         model.addAttribute("result",items);
 
