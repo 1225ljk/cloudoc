@@ -1,0 +1,34 @@
+server:
+  port: 10005
+  servlet:
+    jsp:
+      init-parameters: true #jsp 자동 수정? 뭐 그런 설정
+spring:
+  datasource: #디비 설정
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/plusdrive?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: pdrive
+  jpa:
+    hibernate:
+#      ddl-auto: create
+#      ddl-auto: create-drop
+      ddl-auto: update
+#      ddl-auto: validate
+      naming: #테이블 언더바 방지
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  thymeleaf: # 타임리프 설정
+    cache: false
+    mode: HTML
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+    view-names: thymeleaf/*
+  mvc: #jsp 설정
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  devtools: # 콘솔창 설정
+    livereload:
+      enabled: true

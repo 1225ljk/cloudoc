@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>select</title>
+</head>
+<body>
+<h1 align="center">TotalPolicies [HTML]</h1>
+<br>
+<br>
+  <table id="userTable">
+    <thead>
+    <tr>
+      <th>DomainID</th>
+      <th>PolicyID</th>
+      <th>PolicyName</th>
+      <th>RegDate</th>
+      <th>LastModifyDate</th>
+      <th>Memo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${result}">
+      <td  style="border-right: 1px solid" th:text="${r.DomainId}">emil</td>
+      <td  style="border-right: 1px solid" th:text="${r.PolicyId}">name</td>
+      <td  style="border-right: 1px solid" th:text="${r.PolicyName}">stat</td>
+      <td  style="border-right: 1px solid" th:text="${r.RegDate}">super</td>
+      <td  style="border-right: 1px solid" th:text="${r.LastModifyDate}">super</td>
+      <td  style="border-right: 1px solid" th:text="${r.Memo}">super</td>
+    </tr>
+    </tbody>
+  </table>
+</body>
+</html>
