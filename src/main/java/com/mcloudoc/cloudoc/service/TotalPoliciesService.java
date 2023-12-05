@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface TotalPoliciesService {
 
-    List<TotalPolicies> selectListAll(String DomainID) ;
+    public List<TotalPolicies> selectListAll(String DomainID) ;
+
 }

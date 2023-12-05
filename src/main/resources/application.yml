@@ -6,9 +6,10 @@ server:
 spring:
   datasource: #디비 설정
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/plusdrive?serverTimezone=UTC&characterEncoding=UTF-8
     username: root
     password: pdrive
+    hikari:
+       jdbc-url: jdbc:mysql://localhost:3306/plusdrive?serverTimezone=UTC&characterEncoding=UTF-8
   jpa:
     hibernate:
 #      ddl-auto: create
@@ -32,3 +33,11 @@ spring:
   devtools: # 콘솔창 설정
     livereload:
       enabled: true
+  mybatis:
+   # type-aliases-package: com.mcloudoc.cloudoc.mapper
+    configuration:
+      map-underscore-to-camel-case: true
+    # mybatis:
+    #   mapper-locations:
+    #     - classpath:mapper/**.xml
+    mapper-locations: classpath:/mapper/*.xml

@@ -24,8 +24,8 @@
       <td  style="border-right: 1px solid" th:text="${r.DomainId}">emil</td>
       <td  style="border-right: 1px solid" th:text="${r.PolicyId}">name</td>
       <td  style="border-right: 1px solid" th:text="${r.PolicyName}">stat</td>
-      <td  style="border-right: 1px solid" th:text="${r.RegDate}">super</td>
-      <td  style="border-right: 1px solid" th:text="${r.LastModifyDate}">super</td>
+      <td  style="border-right: 1px solid"th:text="|${#strings.substring(r.RegDate, 0, 4)}-${#strings.substring(r.RegDate, 4, 6)}-${#strings.substring(r.RegDate, 6, 8)} ${#strings.substring(r.RegDate, 8, 10)}:${#strings.substring(r.RegDate, 10, 12)}:${#strings.substring(r.RegDate, 12, 14)}|">stat</td>
+      <td  style="border-right: 1px solid"th:text="|${#strings.substring(r.LastModifyDate, 0, 4)}-${#strings.substring(r.LastModifyDate, 4, 6)}-${#strings.substring(r.LastModifyDate, 6, 8)} ${#strings.substring(r.LastModifyDate, 8, 10)}:${#strings.substring(r.LastModifyDate, 10, 12)}:${#strings.substring(r.LastModifyDate, 12, 14)}|">stat</td>
       <td  style="border-right: 1px solid" th:text="${r.Memo}">super</td>
     </tr>
     </tbody>

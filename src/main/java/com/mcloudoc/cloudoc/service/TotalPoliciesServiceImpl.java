@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class TotalPoliciesServiceImpl implements TotalPoliciesService {
+
     @Autowired
     private TotalPoliciesRepository totalPoliciesRepository;
 
@@ -15,4 +16,5 @@ public class TotalPoliciesServiceImpl implements TotalPoliciesService {
     public List<TotalPolicies> selectListAll(String DomainID){
         return totalPoliciesRepository.findDomainId(DomainID);
     }
+
 }
