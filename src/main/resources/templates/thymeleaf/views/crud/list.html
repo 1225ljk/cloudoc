@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD Table</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    <script>
+        $(function(){
+
+            $('.btnDel').on('click', (e) => {
+                let answer = confirm("삭제하시겠습니까?");
+                if(answer){
+                    console.log(e.target.value);
+                    let del_id = e.target.value;
+
+                    $("#del_id").val(del_id)
+                    $("form[name='frmDelete']").submit();
+                }
+
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h1 align="center">CRUD Table [HTML]</h1>
+<br>
+<br>
+<table id="userTable">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>PolicyID</th>
+        <th>PolicyName</th>
+        <th>RegDate</th>
+        <th>LastModifyDate</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="r : ${result}">
+        <td  style="border-right: 1px solid" th:text="${r.Id  }">emil</td>
+        <td  style="border-right: 1px solid" ><a th:href="@{'/crud/update/' + ${r.id}}" th:text="${r.PolicyID}"></a></td>
+        <td  style="border-right: 1px solid" th:text="${r.PolicyName}">stat</td>
+        <td  style="border-right: 1px solid"th:text="|${#strings.substring(r.RegDate, 0, 4)}-${#strings.substring(r.RegDate, 4, 6)}-${#strings.substring(r.RegDate, 6, 8)} ${#strings.substring(r.RegDate, 8, 10)}:${#strings.substring(r.RegDate, 10, 12)}:${#strings.substring(r.RegDate, 12, 14)}|">stat</td>
+        <td  style="border-right: 1px solid"th:text="|${#strings.substring(r.LastModifyDate, 0, 4)}-${#strings.substring(r.LastModifyDate, 4, 6)}-${#strings.substring(r.LastModifyDate, 6, 8)} ${#strings.substring(r.LastModifyDate, 8, 10)}:${#strings.substring(r.LastModifyDate, 10, 12)}:${#strings.substring(r.LastModifyDate, 12, 14)}|">stat</td>
+        <td> <button type="button" class="btnDel"  th:value="${r.Id  }">X</button></td>
+    </tr>
+    </tbody>
+</table>
+
+<form name="frmDelete" th:action="@{/crud/delete}" method="post">
+    <input type="hidden" name="id" id="del_id" >
+</form>
+</body>
+</html>
